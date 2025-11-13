@@ -484,3 +484,4 @@ $RECYCLE.BIN/
 *.swp
 DatingApp/API/appsettings.json
 DatingApp/API/dating.db*
+.vscode
