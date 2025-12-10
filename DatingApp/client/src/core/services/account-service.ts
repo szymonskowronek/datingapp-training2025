@@ -36,6 +36,7 @@ export class AccountService {
     this.currentUser.set(user);
     localStorage.setItem('user', JSON.stringify(user));
   }
+
   logout() {
     this.currentUser.set(null);
     localStorage.removeItem('user');

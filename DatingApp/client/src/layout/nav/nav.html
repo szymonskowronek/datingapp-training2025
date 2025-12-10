@@ -35,6 +35,11 @@
       }
       <a routerLink="/errors" routerLinkActive="text-accent">Errors</a>
     </nav>
+
+    @if (busyService.busyRequestCount() > 0) {
+    <span class="spinner loading-spinner text-accent"></span>
+    }
+
     <div class="flex align-middle ml-auto gap-3">
       <div class="dropdown dropdown-end mr-5">
         <button
@@ -57,7 +62,7 @@
         </button>
         <ul
           tabindex="1"
-          class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+          class="dropdown-content menu bg-base-100 rounded-box z-50 w-52 p-2 shadow-sm"
         >
           @for (theme of themes; track $index) {
           <li (click)="handleSelectTheme(theme)">
