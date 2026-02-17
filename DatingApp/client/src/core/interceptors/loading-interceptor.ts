@@ -28,6 +28,10 @@ export const loadingInterceptor: HttpInterceptorFn = (req, next) => {
 
   const cacheKey = generateCacheKey(req.url, req.params);
 
+  if (req.method.includes('POST') && req.url.includes('/messages')) {
+    invalidateCache('/messages');
+  }
+
   if (req.method.includes('POST') && req.url.includes('/likes')) {
     invalidateCache('/likes');
   }
@@ -48,6 +52,6 @@ export const loadingInterceptor: HttpInterceptorFn = (req, next) => {
     }),
     finalize(() => {
       busyService.idle();
-    })
+    }),
   );
 };
